@@ -1,0 +1,23 @@
+language: python
+
+matrix:
+  include:
+    - python: 3.7
+      dist: xenial
+      sudo: true
+
+branches:
+  except:
+    - /^[0-9]+\.[0-9]+\.[0-9]+/
+
+install:
+  - pip install pipenv
+  - pip install --dev --skip-lock
+
+script:
+  - isort --recursive --diff imagevalidator tests && isort --recursive --check-only imagevalidator tests
+  - flake8 imagevalidator tests
+  - pipenv run pytest
+
+after_success:
+  - pipenv run codecov
