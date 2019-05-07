@@ -1,5 +1,9 @@
 language: python
 
+python:
+  - 3.5
+  - 3.6
+
 matrix:
   include:
     - python: 3.7
@@ -11,13 +15,11 @@ branches:
     - /^[0-9]+\.[0-9]+\.[0-9]+/
 
 install:
-  - pip install -e ".[test]"
+  - pip install pipenv
+  - pipenv install --dev --skip-lock -e ".[test]"
 
 script:
-  - isort --recursive --diff imagevalidator tests && isort --recursive --check-only imagevalidator tests
-  - flake8 imagevalidator tests
-  - pytest
+  pipenv run pytest --cov=image --cov-report=xml -v
 
 after_success:
-  - codecov
-
+  pipenv run codecov

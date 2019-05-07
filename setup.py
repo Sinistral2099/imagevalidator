@@ -21,8 +21,6 @@ def get_version():
 extras_require = {
     "test": [
         "pytest>=2.2.3",
-        "flake8>=2.4.0",
-        "isort>=4.2.2",
         "pillow>=3.4.2"
     ],
 }
@@ -56,6 +54,8 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
