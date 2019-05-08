@@ -15,11 +15,7 @@ branches:
     - /^[0-9]+\.[0-9]+\.[0-9]+/
 
 install:
-  - pip install pipenv
-  - pipenv install --dev --skip-lock -e ".[test]"
+  - pip install -r requirements.txt
 
 script:
-  pipenv run pytest --cov=image --cov-report=xml -v
-
-after_success:
-  pipenv run codecov
+  pytest
